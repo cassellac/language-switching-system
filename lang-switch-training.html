@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Switching System Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .video-section {
+            padding: 40px;
+        }
+
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-title {
+            font-size: 24px;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .slide-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .visual-demo {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid #e9ecef;
+        }
+
+        .demo-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .demo-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .demo-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .demo-btn:not(.active) {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        .demo-text {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #68d391;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .code-block .keyword {
+            color: #f687b3;
+        }
+
+        .code-block .string {
+            color: #fbd38d;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .nav-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:disabled {
+            background: #e9ecef;
+            color: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress {
+            text-align: center;
+            color: #6c757d;
+            font-weight: bold;
+        }
+
+        .diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .diagram-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px solid #667eea;
+            min-width: 150px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .arrow {
+            font-size: 30px;
+            color: #667eea;
+            animation: slide 1.5s infinite;
+        }
+
+        @keyframes slide {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .tip-box {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .tip-box strong {
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Language Switching System</h1>
+            <p>Learn how Digital Allies makes websites speak two languages</p>
+        </div>
+
+        <div class="video-section">
+            <!-- Slide 1: Introduction -->
+            <div class="slide active" id="slide1">
+                <h2 class="slide-title">What Is Language Switching?</h2>
+                <div class="slide-content">
+                    <p>Language switching lets your website speak multiple languages without reloading the page.</p>
+                    
+                    <div class="visual-demo">
+                        <div class="demo-buttons">
+                            <button class="demo-btn active" onclick="demoSwitch('en', this)">EN</button>
+                            <button class="demo-btn" onclick="demoSwitch('es', this)">ES</button>
+                        </div>
+                        <div class="demo-text" id="demoText">Welcome to Digital Allies</div>
+                    </div>
+
+                    <ul class="feature-list">
+                        <li>Switch between English and Spanish instantly</li>
+                        <li>No page reload needed</li>
+                        <li>User preference saved automatically</li>
+                        <li>Works on all devices</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 2: How It Works -->
+            <div class="slide" id="slide2">
+                <h2 class="slide-title">How Does It Work?</h2>
+                <div class="slide-content">
+                    <p>The system uses three simple steps to switch languages:</p>
+                    
+                    <div class="diagram">
+                        <div class="diagram-box">
+                            <div>1. Store Both Languages</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="diagram-box">
+                            <div>2. User Clicks Button</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="diagram-box">
+                            <div>3. Text Updates</div>
+                        </div>
+                    </div>
+
+                    <p>Every piece of text on the website has both English and Spanish versions stored together.</p>
+
+                    <div class="tip-box">
+                        <strong>Key Point:</strong> Both languages are loaded at once so switching is instant.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: The Technical Side -->
+            <div class="slide" id="slide3">
+                <h2 class="slide-title">The Technical Side (For Developers)</h2>
+                <div class="slide-content">
+                    <p>The system uses <span class="highlight">data attributes</span> to store translations:</p>
+                    
+                    <div class="code-block">
+&lt;h1 <span class="keyword">data-en</span>=<span class="string">"Welcome to Digital Allies"</span>
+    <span class="keyword">data-es</span>=<span class="string">"Bienvenido a Digital Allies"</span>&gt;
+    Welcome to Digital Allies
+&lt;/h1&gt;
+                    </div>
+
+                    <ul class="feature-list">
+                        <li>data-en stores the English version</li>
+                        <li>data-es stores the Spanish version</li>
+                        <li>JavaScript reads these attributes</li>
+                        <li>Content updates when language changes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 4: What Gets Translated -->
+            <div class="slide" id="slide4">
+                <h2 class="slide-title">What Gets Translated?</h2>
+                <div class="slide-content">
+                    <p>Every part of the website can be translated:</p>
+                    
+                    <ul class="feature-list">
+                        <li>Navigation menus (Home becomes Inicio)</li>
+                        <li>Headings and paragraphs</li>
+                        <li>Button text (Start Your Project becomes Comienza Tu Proyecto)</li>
+                        <li>Form labels and placeholders</li>
+                        <li>Legal pages (separate files for Privacy Policy and Terms)</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <strong>Important:</strong> Spanish text is usually 20-30% longer than English. Design needs flexible layouts.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Memory Feature -->
+            <div class="slide" id="slide5">
+                <h2 class="slide-title">The System Remembers You</h2>
+                <div class="slide-content">
+                    <p>When you pick a language, the website remembers your choice:</p>
+                    
+                    <div class="diagram">
+                        <div class="diagram-box">
+                            <div>You Select Spanish</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="diagram-box">
+                            <div>Saved to Browser</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="diagram-box">
+                            <div>Next Visit: Spanish</div>
+                        </div>
+                    </div>
+
+                    <p>This uses <span class="highlight">localStorage</span> to save your preference.</p>
+
+                    <ul class="feature-list">
+                        <li>Works across all pages on the site</li>
+                        <li>Stays saved even after closing browser</li>
+                        <li>No login required</li>
+                        <li>Respects privacy (stored locally only)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 6: Accessibility -->
+            <div class="slide" id="slide6">
+                <h2 class="slide-title">Built For Everyone</h2>
+                <div class="slide-content">
+                    <p>The system works for all users, including those using assistive technology:</p>
+                    
+                    <ul class="feature-list">
+                        <li>Screen readers announce language changes</li>
+                        <li>Buttons have proper labels in both languages</li>
+                        <li>Works with keyboard navigation</li>
+                        <li>Still functional if JavaScript is disabled</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <strong>Accessibility First:</strong> The page language attribute updates automatically so screen readers use the correct pronunciation.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Performance -->
+            <div class="slide" id="slide7">
+                <h2 class="slide-title">Fast and Efficient</h2>
+                <div class="slide-content">
+                    <p>The system is designed to be lightweight and fast:</p>
+                    
+                    <ul class="feature-list">
+                        <li>No page reload when switching languages</li>
+                        <li>Both languages load at once (minimal extra data)</li>
+                        <li>JavaScript code is small and efficient</li>
+                        <li>Works on slow connections</li>
+                        <li>Mobile-friendly and responsive</li>
+                    </ul>
+
+                    <div class="visual-demo">
+                        <p style="text-align: center; font-size: 18px;">
+                            <strong>Switching Speed:</strong> Instant (less than 100ms)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Summary -->
+            <div class="slide" id="slide8">
+                <h2 class="slide-title">Key Takeaways</h2>
+                <div class="slide-content">
+                    <ul class="feature-list">
+                        <li>Language switching happens instantly without page reload</li>
+                        <li>Both languages are stored in HTML attributes</li>
+                        <li>User language preference is remembered</li>
+                        <li>System is accessible to all users</li>
+                        <li>Performance optimized for speed</li>
+                        <li>Easy to maintain and update translations</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <strong>Next Steps:</strong> Test the language switcher on your device. Notice how fast it responds and how your choice is remembered.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+            <div class="progress">
+                <span id="currentSlide">1</span> / <span id="totalSlides">8</span>
+            </div>
+            <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 8;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            
+            if (n > totalSlides) currentSlide = totalSlides;
+            if (n < 1) currentSlide = 1;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+            
+            document.getElementById('currentSlide').textContent = currentSlide;
+            
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+        }
+
+        function changeSlide(n) {
+            currentSlide += n;
+            showSlide(currentSlide);
+        }
+
+        function demoSwitch(lang, btn) {
+            const demoText = document.getElementById('demoText');
+            const buttons = document.querySelectorAll('.demo-btn');
+            
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            if (lang === 'en') {
+                demoText.textContent = 'Welcome to Digital Allies';
+            } else {
+                demoText.textContent = 'Bienvenido a Digital Allies';
+            }
+            
+            demoText.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                demoText.style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
