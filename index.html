@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language Switching System - Complete Tutorial | DigitalAllies.net</title>
+    <title>Language Switching System - Coding Tutorial</title>
     <style>
         * {
             margin: 0;
@@ -12,1274 +11,1322 @@
             box-sizing: border-box;
         }
 
-```
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        padding: 20px;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        overflow: hidden;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
 
-    .header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 40px;
-        text-align: center;
-    }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
 
-    .header h1 {
-        font-size: 32px;
-        margin-bottom: 10px;
-    }
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
 
-    .header p {
-        font-size: 18px;
-        opacity: 0.9;
-    }
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
 
-    .content {
-        padding: 40px;
-    }
+        .content {
+            padding: 40px;
+        }
 
-    .slide {
-        display: none;
-        animation: fadeIn 0.5s;
-    }
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
 
-    .slide.active {
-        display: block;
-    }
+        .slide.active {
+            display: block;
+        }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .step-header {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 25px;
-    }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
 
-    .step-number {
-        background: #667eea;
-        color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        font-weight: bold;
-        flex-shrink: 0;
-    }
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
 
-    .step-title {
-        font-size: 28px;
-        color: #333;
-        font-weight: bold;
-    }
+        .step-title {
+            font-size: 28px;
+            color: #333;
+            font-weight: bold;
+        }
 
-    .narration {
-        background: #f0f4ff;
-        border-left: 4px solid #667eea;
-        padding: 20px;
-        margin: 20px 0;
-        border-radius: 8px;
-        font-size: 17px;
-        line-height: 1.8;
-        color: #333;
-    }
+        .narration {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #333;
+        }
 
-    .code-block {
-        background: #2d3748;
-        color: #e2e8f0;
-        padding: 25px;
-        border-radius: 10px;
-        font-family: 'Courier New', monospace;
-        font-size: 14px;
-        overflow-x: auto;
-        margin: 20px 0;
-        position: relative;
-        border: 3px solid #4a5568;
-    }
+        .narration-icon {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 20px;
+        }
 
-    .code-label {
-        position: absolute;
-        top: -12px;
-        left: 20px;
-        background: #667eea;
-        color: white;
-        padding: 4px 12px;
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: bold;
-    }
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 20px 0;
+            position: relative;
+            border: 3px solid #4a5568;
+        }
 
-    .keyword { color: #f687b3; }
-    .string { color: #fbd38d; }
-    .function { color: #68d391; }
-    .comment { color: #a0aec0; }
+        .code-label {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
 
-    .visual-example {
-        background: #f8f9fa;
-        border-radius: 10px;
-        padding: 30px;
-        margin: 25px 0;
-        border: 2px dashed #667eea;
-    }
+        .code-block .comment {
+            color: #a0aec0;
+        }
 
-    .demo-btn {
-        padding: 12px 24px;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.3s;
-        font-size: 16px;
-        background: #e9ecef;
-        color: #6c757d;
-    }
+        .code-block .keyword {
+            color: #f687b3;
+        }
 
-    .demo-btn.active {
-        background: #667eea;
-        color: white;
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-    }
+        .code-block .string {
+            color: #fbd38d;
+        }
 
-    .demo-btn:hover:not(.active) {
-        background: #dee2e6;
-    }
+        .code-block .function {
+            color: #68d391;
+        }
 
-    .tip-box {
-        background: #fff3cd;
-        border-left: 4px solid #ffc107;
-        padding: 20px;
-        margin: 25px 0;
-        border-radius: 4px;
-    }
+        .visual-example {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 2px dashed #667eea;
+        }
 
-    .tip-box strong {
-        color: #856404;
-        display: block;
-        margin-bottom: 8px;
-        font-size: 18px;
-    }
+        .visual-example-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+            text-align: center;
+        }
 
-    .checklist {
-        list-style: none;
-        margin: 20px 0;
-    }
+        .demo-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
 
-    .checklist li {
-        padding: 12px 0;
-        padding-left: 35px;
-        position: relative;
-        font-size: 16px;
-        line-height: 1.6;
-    }
+        .demo-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
 
-    .checklist li:before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: #667eea;
-        font-weight: bold;
-        font-size: 22px;
-    }
+        .demo-btn.active {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
 
-    .controls {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 30px 40px;
-        background: #f8f9fa;
-        border-top: 2px solid #e9ecef;
-    }
+        .demo-btn:not(.active) {
+            background: #e9ecef;
+            color: #6c757d;
+        }
 
-    .nav-btn {
-        padding: 14px 35px;
-        border: none;
-        border-radius: 25px;
-        background: #667eea;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-size: 16px;
-    }
+        .demo-btn:hover:not(.active) {
+            background: #dee2e6;
+        }
 
-    .nav-btn:hover:not(:disabled) {
-        background: #764ba2;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
+        .demo-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
 
-    .nav-btn:disabled {
-        background: #e9ecef;
-        color: #6c757d;
-        cursor: not-allowed;
-    }
+        .demo-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
 
-    .progress {
-        text-align: center;
-    }
+        .demo-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
 
-    .progress-text {
-        color: #6c757d;
-        font-weight: bold;
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
+        .tip-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
 
-    .progress-bar {
-        width: 200px;
-        height: 8px;
-        background: #e9ecef;
-        border-radius: 4px;
-        overflow: hidden;
-        margin: 0 auto;
-    }
+        .tip-box strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
 
-    .progress-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        transition: width 0.3s;
-    }
+        .checklist {
+            list-style: none;
+            margin: 20px 0;
+        }
 
-    .demo-content {
-        background: white;
-        padding: 30px;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        margin-top: 20px;
-    }
+        .checklist li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.6;
+        }
 
-    .demo-buttons {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 22px;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-    }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-top: 2px solid #e9ecef;
+        }
 
-    th, td {
-        padding: 15px;
-        text-align: left;
-        border-bottom: 1px solid #e9ecef;
-    }
+        .nav-btn {
+            padding: 14px 35px;
+            border: none;
+            border-radius: 25px;
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
 
-    th {
-        background: #667eea;
-        color: white;
-        font-weight: bold;
-    }
+        .nav-btn:hover:not(:disabled) {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
-    tr:hover {
-        background: #f8f9fa;
-    }
-</style>
-```
+        .nav-btn:disabled {
+            background: #e9ecef;
+            color: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
 
+        .progress {
+            text-align: center;
+        }
+
+        .progress-text {
+            color: #6c757d;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        .file-structure {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+        }
+
+        .file-item {
+            padding: 8px 0;
+            color: #333;
+        }
+
+        .file-item.indent-1 {
+            padding-left: 20px;
+        }
+
+        .file-item.indent-2 {
+            padding-left: 40px;
+        }
+
+        .file-icon {
+            color: #667eea;
+            margin-right: 8px;
+        }
+
+        .highlight-box {
+            background: #e7f3ff;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .highlight-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #667eea;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .audio-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>🎓 Language Switching System</h1>
-            <p>Complete Narrated Tutorial - Build Like DigitalAllies.net</p>
-            <p style="font-size: 14px; opacity: 0.8; margin-top: 10px;">Learn the exact system used by Digital Allies</p>
+            <p>Complete Step-by-Step Coding Tutorial with Narration</p>
         </div>
 
-```
-    <div class="content">
-        <!-- Slide 1 -->
-        <div class="slide active" id="slide1">
-            <div class="step-header">
-                <div class="step-number">1</div>
-                <div class="step-title">Introduction</div>
+        <div class="content">
+            <!-- Slide 1: Introduction -->
+            <div class="slide active" id="slide1">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Introduction & Overview</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(1)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Welcome to this comprehensive tutorial on building a language switching system for websites. Today, we'll build the same system used on DigitalAllies.net, which allows users to instantly switch between English and Spanish without any page reload. This system is professional, accessible, and fast. By the end of this tutorial, you'll understand every line of code and be able to implement this on your own projects.
+                </div>
+
+                <div class="highlight-box">
+                    <h4>What You'll Learn:</h4>
+                    <ul class="checklist">
+                        <li>How to structure HTML with data attributes for multiple languages</li>
+                        <li>Building a JavaScript controller to manage language switching</li>
+                        <li>Saving user preferences with localStorage</li>
+                        <li>Making the system accessible for all users</li>
+                        <li>SEO best practices for multilingual sites</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Prerequisites:</strong>
+                    Basic knowledge of HTML, CSS, and JavaScript. You should understand DOM manipulation and event handling.
+                </div>
             </div>
 
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(1)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
+            <!-- Slide 2: Project Setup -->
+            <div class="slide" id="slide2">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Project Setup & File Structure</div>
+                </div>
 
-            <div class="narration" id="narration-1">
-                Welcome to this complete tutorial on building a language switching system. You'll learn how to create the exact system used on DigitalAllies.net, allowing users to switch between English and Spanish instantly without page reloads. This system is fast, accessible, and SEO-friendly.
-            </div>
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(2)">Play Audio</button>
+                </div>
 
-            <div class="tip-box">
-                <strong>What You'll Build:</strong>
-                <ul class="checklist">
-                    <li>HTML structure with data attributes for translations</li>
-                    <li>JavaScript controller managing language state</li>
-                    <li>localStorage persistence for user preferences</li>
-                    <li>Accessible UI with screen reader support</li>
-                    <li>Production-ready code you can use immediately</li>
-                </ul>
-            </div>
-        </div>
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Let's start by setting up our project structure. We need three main files: an HTML file for our content, a JavaScript file for the language switching logic, and a CSS file for styling. This keeps our code organized and maintainable. Create a new folder called "multilingual-site" and add these three files inside it.
+                </div>
 
-        <!-- Slide 2 -->
-        <div class="slide" id="slide2">
-            <div class="step-header">
-                <div class="step-number">2</div>
-                <div class="step-title">Project Setup</div>
-            </div>
+                <div class="file-structure">
+                    <div class="file-item">📁 multilingual-site</div>
+                    <div class="file-item indent-1"><span class="file-icon">📄</span> index.html</div>
+                    <div class="file-item indent-1"><span class="file-icon">📄</span> language-controller.js</div>
+                    <div class="file-item indent-1"><span class="file-icon">📄</span> styles.css</div>
+                </div>
 
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(2)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-2">
-                Start by creating a new folder for your project. You need three files: index.html for content, language-controller.js for logic, and styles.css for appearance. This separation keeps your code organized and makes it easy to add the language system to existing projects.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">Terminal Commands</div>
-```
-
+                <div class="code-block">
+                    <div class="code-label">Terminal Command</div>
+<span class="comment"># Create project folder and files</span>
 mkdir multilingual-site
 cd multilingual-site
 touch index.html language-controller.js styles.css
-</div>
+                </div>
 
-```
-            <div class="tip-box">
-                <strong>Pro Tip:</strong>
-                Keep your language controller separate so you can reuse it across multiple pages.
-            </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="slide" id="slide3">
-            <div class="step-header">
-                <div class="step-number">3</div>
-                <div class="step-title">HTML Structure</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(3)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-3">
-                The HTML uses data attributes to store translations. Each element that needs translation gets data-en for English and data-es for Spanish. The initial text matches one language. Add language toggle buttons that users click to switch languages.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">index.html</div>
-```
-
-<span class="keyword"><!DOCTYPE html></span>
-<span class="keyword"><html</span> <span class="string">lang=“en”</span><span class="keyword">></span>
-<span class="keyword"><head></span>
-<span class="keyword"><meta</span> <span class="string">charset=“UTF-8”</span><span class="keyword">></span>
-<span class="keyword"><title</span> <span class="string">data-en=“Digital Allies”
-data-es=“Digital Allies”</span><span class="keyword">></span>
-Digital Allies
-<span class="keyword"></title></span>
-<span class="keyword"><link</span> <span class="string">rel=“stylesheet” href=“styles.css”</span><span class="keyword">></span>
-<span class="keyword"></head></span>
-<span class="keyword"><body></span>
-<span class="keyword"><div</span> <span class="string">class=“language-switcher”</span><span class="keyword">></span>
-<span class="keyword"><button</span> <span class="string">onclick=“toggleLanguage(‘en’)”
-id=“lang-en” class=“lang-btn active”</span><span class="keyword">></span>
-EN
-<span class="keyword"></button></span>
-<span class="keyword"><button</span> <span class="string">onclick=“toggleLanguage(‘es’)”
-id=“lang-es” class=“lang-btn”</span><span class="keyword">></span>
-ES
-<span class="keyword"></button></span>
-<span class="keyword"></div></span>
-
-```
-<span class="keyword">&lt;h1</span> <span class="string">data-en="Welcome to Digital Allies"
-    data-es="Bienvenido a Digital Allies"</span><span class="keyword">&gt;</span>
-    Welcome to Digital Allies
-<span class="keyword">&lt;/h1&gt;</span>
-
-<span class="keyword">&lt;script</span> <span class="string">src="language-controller.js"</span><span class="keyword">&gt;&lt;/script&gt;</span>
-```
-
-<span class="keyword"></body></span>
-<span class="keyword"></html></span>
-</div>
-</div>
-
-```
-        <!-- Slide 4 -->
-        <div class="slide" id="slide4">
-            <div class="step-header">
-                <div class="step-number">4</div>
-                <div class="step-title">JavaScript Controller - Setup</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(4)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-4">
-                Build a JavaScript class to manage language switching. The controller has three jobs: initialize the system on page load, handle language switching, and save user preferences. Start with the constructor that runs when the class is created.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">language-controller.js - Part 1</div>
-```
-
-<span class="keyword">class</span> <span class="function">LanguageController</span> {
-<span class="function">constructor</span>() {
-<span class="comment">// Get saved language or default to English</span>
-<span class="keyword">this</span>.currentLang = localStorage.<span class="function">getItem</span>(<span class="string">‘language’</span>) || <span class="string">‘en’</span>;
-<span class="keyword">this</span>.<span class="function">init</span>();
-}
-
-```
-<span class="function">init</span>() {
-    <span class="keyword">this</span>.<span class="function">updateContent</span>(<span class="keyword">this</span>.currentLang);
-    <span class="keyword">this</span>.<span class="function">updateUI</span>(<span class="keyword">this</span>.currentLang);
-    <span class="keyword">this</span>.<span class="function">updatePageLang</span>(<span class="keyword">this</span>.currentLang);
-}
-```
-
-}
-</div>
-
-```
-            <div class="tip-box">
-                <strong>localStorage Explained:</strong>
-                This browser feature saves data even after closing the browser. Use it to remember the user's language choice.
-            </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="slide" id="slide5">
-            <div class="step-header">
-                <div class="step-number">5</div>
-                <div class="step-title">Toggle Language Function</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(5)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-5">
-                The toggle function runs when users click EN or ES. It updates the current language, saves the choice to localStorage, and calls three update methods to refresh content, button states, and language attributes. This happens instantly without reloading.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">language-controller.js - Part 2</div>
-```
-
-<span class="function">toggleLanguage</span>(lang) {
-<span class="keyword">this</span>.currentLang = lang;
-localStorage.<span class="function">setItem</span>(<span class="string">‘language’</span>, lang);
-<span class="keyword">this</span>.<span class="function">updateContent</span>(lang);
-<span class="keyword">this</span>.<span class="function">updateUI</span>(lang);
-<span class="keyword">this</span>.<span class="function">updatePageLang</span>(lang);
-}
-</div>
-
-```
-            <div class="visual-example">
-                <div style="text-align: center;">
-                    <div style="display: inline-block; padding: 15px 25px; background: #667eea; color: white; border-radius: 8px; margin: 10px;">
-                        User Clicks "ES"
-                    </div>
-                    <div style="margin: 20px 0; font-size: 24px; color: #667eea;">↓</div>
-                    <div style="display: inline-block; padding: 15px 25px; background: #f687b3; color: white; border-radius: 8px; margin: 10px;">
-                        toggleLanguage('es') Runs
-                    </div>
-                    <div style="margin: 20px 0; font-size: 24px; color: #667eea;">↓</div>
-                    <div style="display: inline-block; padding: 15px 25px; background: #68d391; color: white; border-radius: 8px; margin: 10px;">
-                        Page Updates to Spanish
-                    </div>
+                <div class="tip-box">
+                    <strong>Pro Tip:</strong>
+                    Keep your language controller in a separate JavaScript file. This makes it reusable across multiple pages on your website.
                 </div>
             </div>
-        </div>
 
-        <!-- Slide 6 -->
-        <div class="slide" id="slide6">
-            <div class="step-header">
-                <div class="step-number">6</div>
-                <div class="step-title">Update Content Method</div>
-            </div>
+            <!-- Slide 3: HTML Structure -->
+            <div class="slide" id="slide3">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Building the HTML Structure</div>
+                </div>
 
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(6)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(3)">Play Audio</button>
+                </div>
 
-            <div class="narration" id="narration-6">
-                This method handles the actual text switching. It finds every element with both data-en and data-es attributes. For each element, it reads the appropriate data attribute based on selected language and updates the text. querySelectorAll finds all matching elements at once.
-            </div>
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Now let's build our HTML structure. The key concept here is using data attributes. Each element that needs translation will have two data attributes: data-en for English and data-es for Spanish. The initial text content can be in either language. We'll also add a language toggle button that users can click to switch between languages.
+                </div>
 
-            <div class="code-block">
-                <div class="code-label">language-controller.js - Part 3</div>
-```
-
-<span class="function">updateContent</span>(lang) {
-<span class="keyword">const</span> elements = document.<span class="function">querySelectorAll</span>(<span class="string">’[data-en][data-es]’</span>);
-
-```
-elements.<span class="function">forEach</span>(el => {
-    <span class="keyword">const</span> content = el.<span class="function">getAttribute</span>(<span class="string">`data-${lang}`</span>);
+                <div class="code-block">
+                    <div class="code-label">index.html</div>
+<span class="keyword">&lt;!DOCTYPE html&gt;</span>
+<span class="keyword">&lt;html</span> <span class="string">lang="en"</span><span class="keyword">&gt;</span>
+<span class="keyword">&lt;head&gt;</span>
+    <span class="keyword">&lt;meta</span> <span class="string">charset="UTF-8"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;meta</span> <span class="string">name="viewport" content="width=device-width, initial-scale=1.0"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;title</span> <span class="string">data-en="Digital Allies - Web Development" 
+           data-es="Digital Allies - Desarrollo Web"</span><span class="keyword">&gt;</span>
+        Digital Allies - Web Development
+    <span class="keyword">&lt;/title&gt;</span>
+    <span class="keyword">&lt;link</span> <span class="string">rel="stylesheet" href="styles.css"</span><span class="keyword">&gt;</span>
+<span class="keyword">&lt;/head&gt;</span>
+<span class="keyword">&lt;body&gt;</span>
     
-    <span class="keyword">if</span> (content) {
-        <span class="keyword">if</span> (el.tagName === <span class="string">'INPUT'</span> || el.tagName === <span class="string">'TEXTAREA'</span>) {
-            el.placeholder = content;
-        } <span class="keyword">else</span> {
-            el.textContent = content;
-        }
-    }
-});
-```
+    <span class="comment">&lt;!-- Language Toggle Buttons --&gt;</span>
+    <span class="keyword">&lt;div</span> <span class="string">class="language-switcher"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;button</span> <span class="string">onclick="toggleLanguage('en')" id="lang-en"
+                class="lang-btn active"</span><span class="keyword">&gt;</span>
+            EN
+        <span class="keyword">&lt;/button&gt;</span>
+        <span class="keyword">&lt;button</span> <span class="string">onclick="toggleLanguage('es')" id="lang-es"
+                class="lang-btn"</span><span class="keyword">&gt;</span>
+            ES
+        <span class="keyword">&lt;/button&gt;</span>
+    <span class="keyword">&lt;/div&gt;</span>
 
-}
-</div>
+    <span class="comment">&lt;!-- Main Content with Translations --&gt;</span>
+    <span class="keyword">&lt;main&gt;</span>
+        <span class="keyword">&lt;h1</span> <span class="string">data-en="Welcome to Digital Allies"
+            data-es="Bienvenido a Digital Allies"</span><span class="keyword">&gt;</span>
+            Welcome to Digital Allies
+        <span class="keyword">&lt;/h1&gt;</span>
+        
+        <span class="keyword">&lt;p</span> <span class="string">data-en="Comprehensive digital solutions tailored for your success"
+           data-es="Soluciones digitales integrales adaptadas a tu éxito"</span><span class="keyword">&gt;</span>
+            Comprehensive digital solutions tailored for your success
+        <span class="keyword">&lt;/p&gt;</span>
+        
+        <span class="keyword">&lt;button</span> <span class="string">class="cta-button"
+                data-en="Start Your Project"
+                data-es="Comienza Tu Proyecto"</span><span class="keyword">&gt;</span>
+            Start Your Project
+        <span class="keyword">&lt;/button&gt;</span>
+    <span class="keyword">&lt;/main&gt;</span>
 
-```
-            <div class="tip-box">
-                <strong>Special Handling:</strong>
-                Input and textarea elements need their placeholder attribute updated instead of textContent.
-            </div>
-        </div>
-
-        <!-- Slide 7 -->
-        <div class="slide" id="slide7">
-            <div class="step-header">
-                <div class="step-number">7</div>
-                <div class="step-title">Update UI Method</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(7)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-7">
-                This method handles button visual states. When a user selects a language, that button looks active while the other looks inactive. Remove the active class from all buttons, then add it to the selected button. This gives immediate visual feedback.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">language-controller.js - Part 4</div>
-```
-
-<span class="function">updateUI</span>(lang) {
-<span class="keyword">const</span> buttons = document.<span class="function">querySelectorAll</span>(<span class="string">’[id^=“lang-”]’</span>);
-
-```
-buttons.<span class="function">forEach</span>(btn => {
-    btn.classList.<span class="function">remove</span>(<span class="string">'active'</span>);
-});
-
-<span class="keyword">const</span> activeBtn = document.<span class="function">getElementById</span>(<span class="string">`lang-${lang}`</span>);
-<span class="keyword">if</span> (activeBtn) {
-    activeBtn.classList.<span class="function">add</span>(<span class="string">'active'</span>);
-}
-```
-
-}
-</div>
-
-```
-            <div class="visual-example">
-                <div class="demo-buttons">
-                    <button class="demo-btn active" onclick="demoSwitch(this, 'en')">EN</button>
-                    <button class="demo-btn" onclick="demoSwitch(this, 'es')">ES</button>
+    <span class="keyword">&lt;script</span> <span class="string">src="language-controller.js"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+<span class="keyword">&lt;/body&gt;</span>
+<span class="keyword">&lt;/html&gt;</span>
                 </div>
-                <p style="text-align: center; color: #666; margin-top: 15px;">Click buttons to see active state change</p>
-            </div>
-        </div>
 
-        <!-- Slide 8 -->
-        <div class="slide" id="slide8">
-            <div class="step-header">
-                <div class="step-number">8</div>
-                <div class="step-title">Page Language Attribute</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(8)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
+                <div class="highlight-box">
+                    <h4>Key Points About the HTML Structure:</h4>
+                    <ul class="checklist">
+                        <li>Every translatable element has both data-en and data-es attributes</li>
+                        <li>The initial text content matches one of the data attributes</li>
+                        <li>Language buttons have onclick handlers to trigger switching</li>
+                        <li>The html tag has a lang attribute for accessibility</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="narration" id="narration-8">
-                This small but important method updates the lang attribute on the HTML element. It tells browsers and screen readers what language the page uses. Screen readers use this to pronounce words correctly. Search engines use it to understand content better.
-            </div>
+            <!-- Slide 4: JavaScript Controller Part 1 -->
+            <div class="slide" id="slide4">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">JavaScript Controller - Part 1: Setup</div>
+                </div>
 
-            <div class="code-block">
-                <div class="code-label">language-controller.js - Part 5</div>
-```
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(4)">Play Audio</button>
+                </div>
 
-<span class="function">updatePageLang</span>(lang) {
-document.documentElement.lang = lang;
-}
-</div>
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Now we'll build the JavaScript controller that powers our language switching. We'll use a class-based approach to keep everything organized. The controller has three main responsibilities: initialize the system, handle language switching, and persist the user's choice. Let's start with the basic structure and constructor.
+                </div>
 
-```
-            <div class="tip-box">
-                <strong>Accessibility Matters:</strong>
-                Screen readers rely on the lang attribute to use correct pronunciation. This one line makes your site more accessible.
-            </div>
-        </div>
-
-        <!-- Slide 9 -->
-        <div class="slide" id="slide9">
-            <div class="step-header">
-                <div class="step-number">9</div>
-                <div class="step-title">Initialize the System</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(9)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-9">
-                Create an instance of the LanguageController class and make the toggle function available globally. Wait for DOMContentLoaded to ensure all HTML elements exist before initializing. Then create a global function that HTML buttons can call.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">language-controller.js - Final</div>
-```
-
-<span class="keyword">let</span> languageController;
-
-document.<span class="function">addEventListener</span>(<span class="string">‘DOMContentLoaded’</span>, () => {
-languageController = <span class="keyword">new</span> <span class="function">LanguageController</span>();
-});
-
-<span class="keyword">function</span> <span class="function">toggleLanguage</span>(lang) {
-<span class="keyword">if</span> (languageController) {
-languageController.<span class="function">toggleLanguage</span>(lang);
-}
-}
-</div>
-</div>
-
-```
-        <!-- Slide 10 -->
-        <div class="slide" id="slide10">
-            <div class="step-header">
-                <div class="step-number">10</div>
-                <div class="step-title">CSS Styling</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(10)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-10">
-                Add CSS to make the language switcher look professional. Style buttons with smooth transitions and a distinct active state. Users always know which language is selected.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">styles.css</div>
-```
-
-<span class="keyword">.language-switcher</span> {
-display: flex;
-gap: 10px;
-padding: 20px;
-justify-content: flex-end;
-}
-
-<span class="keyword">.lang-btn</span> {
-padding: 10px 20px;
-border: 2px solid #667eea;
-border-radius: 25px;
-background: white;
-color: #667eea;
-font-weight: bold;
-cursor: pointer;
-transition: all 0.3s;
-}
-
-<span class="keyword">.lang-btn.active</span> {
-background: #667eea;
-color: white;
-box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-</div>
-</div>
-
-```
-        <!-- Slide 11 -->
-        <div class="slide" id="slide11">
-            <div class="step-header">
-                <div class="step-number">11</div>
-                <div class="step-title">Testing Checklist</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(11)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-11">
-                Test thoroughly before deploying. Open your HTML file in a browser and verify these features work correctly.
-            </div>
-
-            <div class="tip-box">
-                <strong>Testing Steps:</strong>
-                <ul class="checklist">
-                    <li>All text switches when clicking language buttons</li>
-                    <li>Active button state updates correctly</li>
-                    <li>Language preference saves after page refresh</li>
-                    <li>localStorage shows correct language value</li>
-                    <li>HTML lang attribute updates</li>
-                    <li>No console errors appear</li>
-                    <li>Works on mobile devices</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Slide 12 -->
-        <div class="slide" id="slide12">
-            <div class="step-header">
-                <div class="step-number">12</div>
-                <div class="step-title">Complete Code</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(12)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-12">
-                Here's the complete LanguageController class. This production-ready code works immediately. The class structure keeps everything organized and reusable.
-            </div>
-
-            <div class="code-block" style="max-height: 400px; overflow-y: auto;">
-                <div class="code-label">Complete language-controller.js</div>
-```
-
+                <div class="code-block">
+                    <div class="code-label">language-controller.js - Part 1</div>
 <span class="keyword">class</span> <span class="function">LanguageController</span> {
-<span class="function">constructor</span>() {
-<span class="keyword">this</span>.currentLang = localStorage.<span class="function">getItem</span>(<span class="string">‘language’</span>) || <span class="string">‘en’</span>;
-<span class="keyword">this</span>.<span class="function">init</span>();
+    <span class="comment">// Constructor runs when class is instantiated</span>
+    <span class="function">constructor</span>() {
+        <span class="comment">// Try to get saved language, default to English</span>
+        <span class="keyword">this</span>.currentLang = localStorage.<span class="function">getItem</span>(<span class="string">'language'</span>) || <span class="string">'en'</span>;
+        
+        <span class="comment">// Initialize the system when page loads</span>
+        <span class="keyword">this</span>.<span class="function">init</span>();
+    }
+    
+    <span class="comment">// Initialize method sets up everything on page load</span>
+    <span class="function">init</span>() {
+        <span class="comment">// Update all content to show correct language</span>
+        <span class="keyword">this</span>.<span class="function">updateContent</span>(<span class="keyword">this</span>.currentLang);
+        
+        <span class="comment">// Update button states to show active language</span>
+        <span class="keyword">this</span>.<span class="function">updateUI</span>(<span class="keyword">this</span>.currentLang);
+        
+        <span class="comment">// Update HTML lang attribute for accessibility</span>
+        <span class="keyword">this</span>.<span class="function">updatePageLang</span>(<span class="keyword">this</span>.currentLang);
+    }
 }
+                </div>
 
-```
-<span class="function">init</span>() {
-    <span class="keyword">this</span>.<span class="function">updateContent</span>(<span class="keyword">this</span>.currentLang);
-    <span class="keyword">this</span>.<span class="function">updateUI</span>(<span class="keyword">this</span>.currentLang);
-    <span class="keyword">this</span>.<span class="function">updatePageLang</span>(<span class="keyword">this</span>.currentLang);
-}
+                <div class="tip-box">
+                    <strong>Understanding localStorage:</strong>
+                    localStorage is a browser feature that saves data even after the user closes the browser. We use it to remember which language the user selected, so they don't have to choose every time they visit.
+                </div>
+            </div>
+
+            <!-- Slide 5: JavaScript Controller Part 2 -->
+            <div class="slide" id="slide5">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div class="step-title">JavaScript Controller - Part 2: Toggle Function</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(5)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    The toggle language function is what runs when a user clicks the EN or ES button. It updates the current language variable, saves the choice to localStorage, and then calls our three update methods to refresh the page content, button states, and language attribute. This all happens instantly without reloading the page.
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">language-controller.js - Part 2</div>
+<span class="comment">// Add this method to the LanguageController class</span>
 
 <span class="function">toggleLanguage</span>(lang) {
+    <span class="comment">// Update the current language variable</span>
     <span class="keyword">this</span>.currentLang = lang;
+    
+    <span class="comment">// Save the choice to browser storage</span>
     localStorage.<span class="function">setItem</span>(<span class="string">'language'</span>, lang);
+    
+    <span class="comment">// Update all content on the page</span>
     <span class="keyword">this</span>.<span class="function">updateContent</span>(lang);
+    
+    <span class="comment">// Update button appearance</span>
     <span class="keyword">this</span>.<span class="function">updateUI</span>(lang);
+    
+    <span class="comment">// Update HTML language attribute</span>
     <span class="keyword">this</span>.<span class="function">updatePageLang</span>(lang);
+    
+    <span class="comment">// Optional: Announce change to screen readers</span>
+    <span class="keyword">this</span>.<span class="function">announceChange</span>(lang);
 }
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-example-title">What Happens When You Click a Language Button</div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <div style="display: inline-block; padding: 15px 25px; background: #667eea; color: white; border-radius: 8px; margin: 10px;">
+                            User Clicks "ES"
+                        </div>
+                        <div style="margin: 20px 0; font-size: 24px; color: #667eea;">↓</div>
+                        <div style="display: inline-block; padding: 15px 25px; background: #f687b3; color: white; border-radius: 8px; margin: 10px;">
+                            toggleLanguage('es') Runs
+                        </div>
+                        <div style="margin: 20px 0; font-size: 24px; color: #667eea;">↓</div>
+                        <div style="display: inline-block; padding: 15px 25px; background: #68d391; color: white; border-radius: 8px; margin: 10px;">
+                            Page Updates to Spanish
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Update Content Method -->
+            <div class="slide" id="slide6">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <div class="step-title">JavaScript Controller - Part 3: Update Content</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(6)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    The update content method is where the actual text switching happens. This method finds every element on the page that has both data-en and data-es attributes. For each element, it reads the appropriate data attribute based on the selected language and updates the text content. The querySelector All method finds all matching elements at once, and we loop through them with forEach.
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">language-controller.js - Part 3</div>
+<span class="comment">// Add this method to the LanguageController class</span>
 
 <span class="function">updateContent</span>(lang) {
+    <span class="comment">// Find all elements with both language attributes</span>
     <span class="keyword">const</span> elements = document.<span class="function">querySelectorAll</span>(<span class="string">'[data-en][data-es]'</span>);
+    
+    <span class="comment">// Loop through each element</span>
     elements.<span class="function">forEach</span>(el => {
+        <span class="comment">// Get the translation for selected language</span>
         <span class="keyword">const</span> content = el.<span class="function">getAttribute</span>(<span class="string">`data-${lang}`</span>);
+        
+        <span class="comment">// If translation exists, update the element</span>
         <span class="keyword">if</span> (content) {
+            <span class="comment">// Check if it's an input or textarea</span>
             <span class="keyword">if</span> (el.tagName === <span class="string">'INPUT'</span> || el.tagName === <span class="string">'TEXTAREA'</span>) {
                 el.placeholder = content;
             } <span class="keyword">else</span> {
+                <span class="comment">// For regular elements, update text content</span>
                 el.textContent = content;
             }
         }
     });
 }
+                </div>
+
+                <div class="highlight-box">
+                    <h4>How querySelector Works:</h4>
+                    <p><strong>[data-en][data-es]</strong> is a CSS selector that finds elements with BOTH attributes. The square brackets tell the browser to look for elements that have these specific data attributes.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Special Handling:</strong>
+                    Notice we check for input and textarea elements. These need their placeholder attribute updated instead of textContent.
+                </div>
+            </div>
+
+            <!-- Slide 7: Update UI Method -->
+            <div class="slide" id="slide7">
+                <div class="step-header">
+                    <div class="step-number">7</div>
+                    <div class="step-title">JavaScript Controller - Part 4: Update UI</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(7)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    The update UI method handles the visual state of our language toggle buttons. When a user selects a language, we want that button to look active while the other looks inactive. We do this by adding and removing CSS classes. First, we remove the active class from all language buttons, then we add it to the currently selected button. This gives immediate visual feedback to the user.
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">language-controller.js - Part 4</div>
+<span class="comment">// Add this method to the LanguageController class</span>
 
 <span class="function">updateUI</span>(lang) {
+    <span class="comment">// Find all language buttons (ids starting with 'lang-')</span>
     <span class="keyword">const</span> buttons = document.<span class="function">querySelectorAll</span>(<span class="string">'[id^="lang-"]'</span>);
-    buttons.<span class="function">forEach</span>(btn => btn.classList.<span class="function">remove</span>(<span class="string">'active'</span>));
     
+    <span class="comment">// Remove active state from all buttons</span>
+    buttons.<span class="function">forEach</span>(btn => {
+        btn.classList.<span class="function">remove</span>(<span class="string">'active'</span>);
+    });
+    
+    <span class="comment">// Find and activate the selected language button</span>
     <span class="keyword">const</span> activeBtn = document.<span class="function">getElementById</span>(<span class="string">`lang-${lang}`</span>);
-    <span class="keyword">if</span> (activeBtn) activeBtn.classList.<span class="function">add</span>(<span class="string">'active'</span>);
+    <span class="keyword">if</span> (activeBtn) {
+        activeBtn.classList.<span class="function">add</span>(<span class="string">'active'</span>);
+    }
 }
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-example-title">Live Button State Demo</div>
+                    <div class="demo-buttons" id="demoButtons7">
+                        <button class="demo-btn active" onclick="updateDemoButtons(7, 'en')">EN</button>
+                        <button class="demo-btn" onclick="updateDemoButtons(7, 'es')">ES</button>
+                    </div>
+                    <p style="text-align: center; color: #666; margin-top: 15px;">Click the buttons above to see the active state change</p>
+                </div>
+            </div>
+
+            <!-- Slide 8: Update Page Lang Method -->
+            <div class="slide" id="slide8">
+                <div class="step-header">
+                    <div class="step-number">8</div>
+                    <div class="step-title">JavaScript Controller - Part 5: Page Language</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(8)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    The update page lang method is small but important for accessibility. It updates the lang attribute on the HTML element. This tells browsers and screen readers what language the page content is in. Screen readers use this information to pronounce words correctly. Search engines also use it to understand your content better. This is a simple one-line method but it makes a big difference for accessibility.
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">language-controller.js - Part 5</div>
+<span class="comment">// Add this method to the LanguageController class</span>
 
 <span class="function">updatePageLang</span>(lang) {
+    <span class="comment">// Update the HTML element's lang attribute</span>
     document.documentElement.lang = lang;
 }
-```
 
+<span class="comment">// Optional but recommended: Announce changes to screen readers</span>
+<span class="function">announceChange</span>(lang) {
+    <span class="keyword">const</span> announcement = lang === <span class="string">'es'</span>
+        ? <span class="string">'Idioma cambiado a español'</span>
+        : <span class="string">'Language changed to English'</span>;
+    
+    <span class="comment">// Create temporary announcement element</span>
+    <span class="keyword">const</span> announcer = document.<span class="function">createElement</span>(<span class="string">'div'</span>);
+    announcer.<span class="function">setAttribute</span>(<span class="string">'aria-live'</span>, <span class="string">'polite'</span>);
+    announcer.<span class="function">setAttribute</span>(<span class="string">'aria-atomic'</span>, <span class="string">'true'</span>);
+    announcer.className = <span class="string">'sr-only'</span>;
+    announcer.textContent = announcement;
+    
+    <span class="comment">// Add to page, then remove after screen reader announces</span>
+    document.body.<span class="function">appendChild</span>(announcer);
+    <span class="function">setTimeout</span>(() => document.body.<span class="function">removeChild</span>(announcer), <span class="string">1000</span>);
 }
+                </div>
 
+                <div class="tip-box">
+                    <strong>ARIA Accessibility:</strong>
+                    The aria-live attribute tells screen readers to announce content changes. Setting it to "polite" means it waits for the user to finish what they're doing before announcing.
+                </div>
+            </div>
+
+            <!-- Slide 9: Initialize the Controller -->
+            <div class="slide" id="slide9">
+                <div class="step-header">
+                    <div class="step-number">9</div>
+                    <div class="step-title">Initialize the System</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(9)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Now we need to actually create an instance of our Language Controller class and make the toggle language function available globally so our HTML buttons can call it. We wait for the DOM content loaded event to ensure all HTML elements are ready before we initialize the controller. Then we create a global function that calls the controller's toggle language method.
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">language-controller.js - Final Part</div>
+<span class="comment">// Wait for page to fully load</span>
 <span class="keyword">let</span> languageController;
-document.<span class="function">addEventListener</span>(<span class="string">‘DOMContentLoaded’</span>, () => {
-languageController = <span class="keyword">new</span> <span class="function">LanguageController</span>();
+
+document.<span class="function">addEventListener</span>(<span class="string">'DOMContentLoaded'</span>, () => {
+    <span class="comment">// Create instance of the controller</span>
+    languageController = <span class="keyword">new</span> <span class="function">LanguageController</span>();
 });
 
+<span class="comment">// Global function for HTML onclick handlers</span>
 <span class="keyword">function</span> <span class="function">toggleLanguage</span>(lang) {
-<span class="keyword">if</span> (languageController) {
-languageController.<span class="function">toggleLanguage</span>(lang);
-}
-}
-</div>
-</div>
-
-```
-        <!-- Slide 13 -->
-        <div class="slide" id="slide13">
-            <div class="step-header">
-                <div class="step-number">13</div>
-                <div class="step-title">Real World Example</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(13)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-13">
-                Look at how DigitalAllies.net uses this system in production. The website serves both English and Spanish-speaking clients. Key sections like hero messages, service descriptions, and call-to-action buttons switch seamlessly. Navigation menus update from Home to Inicio, Services to Servicios.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">DigitalAllies.net Example</div>
-```
-
-<span class="comment"><!– Hero Section –></span>
-<span class="keyword"><h1</span> <span class="string">data-en=“Comprehensive digital solutions tailored for your success”
-data-es=“Soluciones digitales integrales adaptadas a tu éxito”</span><span class="keyword">></span>
-Comprehensive digital solutions tailored for your success
-<span class="keyword"></h1></span>
-
-<span class="comment"><!– Navigation –></span>
-<span class="keyword"><nav></span>
-<span class="keyword"><a</span> <span class="string">href=”/” data-en=“Home” data-es=“Inicio”</span><span class="keyword">></span>Home<span class="keyword"></a></span>
-<span class="keyword"><a</span> <span class="string">href=”/services” data-en=“Services” data-es=“Servicios”</span><span class="keyword">></span>Services<span class="keyword"></a></span>
-<span class="keyword"></nav></span>
-
-<span class="comment"><!– Call to Action –></span>
-<span class="keyword"><button</span> <span class="string">data-en=“Start Your Project”
-data-es=“Comienza Tu Proyecto”</span><span class="keyword">></span>
-Start Your Project
-<span class="keyword"></button></span>
-</div>
-
-```
-            <div class="visual-example">
-                <div class="demo-buttons">
-                    <button class="demo-btn active" onclick="demoDA('en')">EN</button>
-                    <button class="demo-btn" onclick="demoDA('es')">ES</button>
-                </div>
-                <div class="demo-content" id="daDemo">
-                    <h3>Comprehensive digital solutions tailored for your success</h3>
-                    <p style="color: #666; margin: 15px 0;">Professional web development services</p>
-                    <button class="demo-btn" style="margin-top: 10px;">Start Your Project</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 14 -->
-        <div class="slide" id="slide14">
-            <div class="step-header">
-                <div class="step-number">14</div>
-                <div class="step-title">Adding More Languages</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(14)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-14">
-                Scale to support more languages easily. Add new data attributes for each language you want. For French, add data-fr. For German, add data-de. Add corresponding buttons. The controller handles any language automatically because it uses the lang parameter dynamically.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">Adding French Support</div>
-```
-
-<span class="comment"><!– HTML with three languages –></span>
-<span class="keyword"><h1</span> <span class="string">data-en=“Welcome to Digital Allies”
-data-es=“Bienvenido a Digital Allies”
-data-fr=“Bienvenue chez Digital Allies”</span><span class="keyword">></span>
-Welcome to Digital Allies
-<span class="keyword"></h1></span>
-
-<span class="comment"><!– Add French button –></span>
-<span class="keyword"><button</span> <span class="string">onclick=“toggleLanguage(‘fr’)”
-id=“lang-fr” class=“lang-btn”</span><span class="keyword">></span>
-FR
-<span class="keyword"></button></span>
-</div>
-
-```
-            <div class="tip-box">
-                <strong>No JavaScript Changes Needed:</strong>
-                The controller automatically handles new languages. Just add data attributes and buttons.
-            </div>
-        </div>
-
-        <!-- Slide 15 -->
-        <div class="slide" id="slide15">
-            <div class="step-header">
-                <div class="step-number">15</div>
-                <div class="step-title">SEO Best Practices</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(15)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-15">
-                Add hreflang tags to tell search engines about language versions. Add alternate links in your HTML head pointing to each language. Consider language-specific meta descriptions. For best SEO results, you might want separate URLs for each language that render server-side.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">SEO Meta Tags</div>
-```
-
-<span class="keyword"><head></span>
-<span class="comment"><!– Alternate language versions –></span>
-<span class="keyword"><link</span> <span class="string">rel=“alternate” hreflang=“en”
-href=“https://digitalallies.net/”</span><span class="keyword">></span>
-<span class="keyword"><link</span> <span class="string">rel=“alternate” hreflang=“es”
-href=“https://digitalallies.net/es/”</span><span class="keyword">></span>
-
-```
-<span class="comment">&lt;!-- Language-specific descriptions --&gt;</span>
-<span class="keyword">&lt;meta</span> <span class="string">name="description" 
-      content="Professional web development"</span><span class="keyword">&gt;</span>
-<span class="keyword">&lt;meta</span> <span class="string">name="description" lang="es"
-      content="Desarrollo web profesional"</span><span class="keyword">&gt;</span>
-```
-
-<span class="keyword"></head></span>
-</div>
-
-```
-            <table>
-                <thead>
-                    <tr>
-                        <th>SEO Element</th>
-                        <th>Implementation</th>
-                        <th>Benefit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>hreflang tags</td>
-                        <td>Link alternate versions</td>
-                        <td>Correct language in search</td>
-                    </tr>
-                    <tr>
-                        <td>lang attribute</td>
-                        <td>Set on HTML element</td>
-                        <td>Better content indexing</td>
-                    </tr>
-                    <tr>
-                        <td>Meta descriptions</td>
-                        <td>Different per language</td>
-                        <td>Better search snippets</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Slide 16 -->
-        <div class="slide" id="slide16">
-            <div class="step-header">
-                <div class="step-number">16</div>
-                <div class="step-title">Performance Tips</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(16)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-16">
-                Optimize for larger sites. Cache DOM queries so you're not searching the entire document every time. Use event delegation for language buttons. Minify your JavaScript for production. These optimizations matter more as your site grows.
-            </div>
-
-            <div class="code-block">
-                <div class="code-label">Performance Optimizations</div>
-```
-
-<span class="keyword">class</span> <span class="function">LanguageController</span> {
-<span class="function">constructor</span>() {
-<span class="keyword">this</span>.currentLang = localStorage.<span class="function">getItem</span>(<span class="string">‘language’</span>) || <span class="string">‘en’</span>;
-<span class="keyword">this</span>.translatableElements = <span class="keyword">null</span>;
-<span class="keyword">this</span>.languageButtons = <span class="keyword">null</span>;
-<span class="keyword">this</span>.<span class="function">init</span>();
-}
-
-```
-<span class="function">cacheElements</span>() {
-    <span class="keyword">if</span> (!<span class="keyword">this</span>.translatableElements) {
-        <span class="keyword">this</span>.translatableElements = 
-            document.<span class="function">querySelectorAll</span>(<span class="string">'[data-en][data-es]'</span>);
+    <span class="keyword">if</span> (languageController) {
+        languageController.<span class="function">toggleLanguage</span>(lang);
     }
 }
+                </div>
 
+                <div class="highlight-box">
+                    <h4>Why Use DOMContentLoaded?</h4>
+                    <p>This event fires when the HTML is fully loaded and parsed. If we try to access HTML elements before this, they might not exist yet and our code will break.</p>
+                </div>
+            </div>
+
+            <!-- Slide 10: CSS Styling -->
+            <div class="slide" id="slide10">
+                <div class="step-header">
+                    <div class="step-number">10</div>
+                    <div class="step-title">Styling the Language Switcher</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(10)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Let's add some CSS to make our language switcher look professional. We'll style the buttons to look modern and add smooth transitions when switching between active states. The active class will have a distinct appearance so users always know which language is selected. We'll also add a screen reader only class for our accessibility announcements.
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">styles.css</div>
+<span class="comment">/* Language Switcher Container */</span>
+<span class="keyword">.language-switcher</span> {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    justify-content: flex-end;
+}
+
+<span class="comment">/* Language Button Base Styles */</span>
+<span class="keyword">.lang-btn</span> {
+    padding: 10px 20px;
+    border: 2px solid #667eea;
+    border-radius: 25px;
+    background: white;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+<span class="comment">/* Hover Effect */</span>
+<span class="keyword">.lang-btn:hover</span> {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+<span class="comment">/* Active Language Button */</span>
+<span class="keyword">.lang-btn.active</span> {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+<span class="comment">/* Screen Reader Only Content */</span>
+<span class="keyword">.sr-only</span> {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-example-title">Styled Language Switcher</div>
+                    <div class="demo-buttons" id="demoButtons10">
+                        <button class="demo-btn active" onclick="updateDemoButtons(10, 'en')">EN</button>
+                        <button class="demo-btn" onclick="updateDemoButtons(10, 'es')">ES</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11: Testing -->
+            <div class="slide" id="slide11">
+                <div class="step-header">
+                    <div class="step-number">11</div>
+                    <div class="step-title">Testing Your Implementation</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(11)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Before deploying your language switching system, you need to test it thoroughly. Open your HTML file in a browser and check these key features. Click between the language buttons to verify all text updates correctly. Refresh the page to confirm your language choice persists. Check the browser's developer tools to see that localStorage is working. Test with a screen reader if possible to verify accessibility.
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Testing Checklist:</h4>
+                    <ul class="checklist">
+                        <li>All text switches when clicking language buttons</li>
+                        <li>Active button state updates correctly</li>
+                        <li>Language preference saves after page refresh</li>
+                        <li>localStorage shows correct language value</li>
+                        <li>HTML lang attribute updates in DOM inspector</li>
+                        <li>No console errors appear</li>
+                        <li>Works on mobile devices</li>
+                        <li>Screen reader announces language changes</li>
+                    </ul>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">Browser Console Test</div>
+<span class="comment">// Open browser console and type these commands</span>
+
+<span class="comment">// Check current language</span>
+localStorage.<span class="function">getItem</span>(<span class="string">'language'</span>)
+
+<span class="comment">// Manually set language</span>
+<span class="function">toggleLanguage</span>(<span class="string">'es'</span>)
+
+<span class="comment">// Check HTML lang attribute</span>
+document.documentElement.lang
+                </div>
+            </div>
+
+            <!-- Slide 12: Adding More Languages -->
+            <div class="slide" id="slide12">
+                <div class="step-header">
+                    <div class="step-number">12</div>
+                    <div class="step-title">Scaling to More Languages</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(12)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Your system can easily scale to support more languages. Simply add new data attributes for each language you want to support. For example, add data-fr for French or data-de for German. Add corresponding buttons to your language switcher. The controller will automatically handle any language you add because it uses the lang parameter dynamically. You don't need to modify the JavaScript logic at all.
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">Adding French Support</div>
+<span class="comment">&lt;!-- HTML with three languages --&gt;</span>
+<span class="keyword">&lt;h1</span> <span class="string">data-en="Welcome to Digital Allies"
+    data-es="Bienvenido a Digital Allies"
+    data-fr="Bienvenue chez Digital Allies"</span><span class="keyword">&gt;</span>
+    Welcome to Digital Allies
+<span class="keyword">&lt;/h1&gt;</span>
+
+<span class="comment">&lt;!-- Add French button --&gt;</span>
+<span class="keyword">&lt;button</span> <span class="string">onclick="toggleLanguage('fr')" id="lang-fr"
+        class="lang-btn"</span><span class="keyword">&gt;</span>
+    FR
+<span class="keyword">&lt;/button&gt;</span>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">Update querySelector</div>
+<span class="comment">// Modify updateContent to handle all languages</span>
 <span class="function">updateContent</span>(lang) {
-    <span class="keyword">this</span>.<span class="function">cacheElements</span>();
-    <span class="keyword">this</span>.translatableElements.<span class="function">forEach</span>(el => {
+    <span class="comment">// Now finds elements with any data-* language attributes</span>
+    <span class="keyword">const</span> elements = document.<span class="function">querySelectorAll</span>(<span class="string">`[data-${lang}]`</span>);
+    
+    elements.<span class="function">forEach</span>(el => {
         <span class="keyword">const</span> content = el.<span class="function">getAttribute</span>(<span class="string">`data-${lang}`</span>);
-        <span class="keyword">if</span> (content) el.textContent = content;
+        <span class="keyword">if</span> (content) {
+            el.textContent = content;
+        }
     });
 }
-```
-
-}
-</div>
-
-```
-            <div class="tip-box">
-                <strong>Performance Boost:</strong>
-                Caching DOM queries can improve performance by 50% or more on pages with many translatable elements.
-            </div>
-        </div>
-
-        <!-- Slide 17 -->
-        <div class="slide" id="slide17">
-            <div class="step-header">
-                <div class="step-number">17</div>
-                <div class="step-title">Troubleshooting</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(17)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-17">
-                Cover common issues you might encounter. If text doesn't update, check both data attributes exist. If buttons don't work, verify JavaScript is loaded. If language doesn't persist, check localStorage is enabled. These are the most frequent problems and solutions.
-            </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Problem</th>
-                        <th>Cause</th>
-                        <th>Solution</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Text doesn't switch</td>
-                        <td>Missing data attributes</td>
-                        <td>Add both data-en and data-es</td>
-                    </tr>
-                    <tr>
-                        <td>Buttons do nothing</td>
-                        <td>JavaScript not loaded</td>
-                        <td>Check script tag and console</td>
-                    </tr>
-                    <tr>
-                        <td>Language doesn't save</td>
-                        <td>localStorage disabled</td>
-                        <td>Check browser settings</td>
-                    </tr>
-                    <tr>
-                        <td>Some text stays same</td>
-                        <td>Wrong querySelector</td>
-                        <td>Verify correct attributes</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="code-block">
-                <div class="code-label">Debugging Tips</div>
-```
-
-<span class="comment">// Add console logs to track execution</span>
-<span class="function">toggleLanguage</span>(lang) {
-console.<span class="function">log</span>(<span class="string">‘Switching to:’</span>, lang);
-<span class="keyword">this</span>.currentLang = lang;
-console.<span class="function">log</span>(<span class="string">‘Saving to localStorage’</span>);
-localStorage.<span class="function">setItem</span>(<span class="string">‘language’</span>, lang);
-}
-</div>
-</div>
-
-```
-        <!-- Slide 18 -->
-        <div class="slide" id="slide18">
-            <div class="step-header">
-                <div class="step-number">18</div>
-                <div class="step-title">Next Steps</div>
-            </div>
-
-            <div class="audio-control">
-                <span>🎙️ Narration</span>
-                <button class="audio-btn" onclick="playNarration(18)">▶ Play Audio</button>
-                <button class="audio-btn" onclick="stopNarration()">⏹ Stop</button>
-            </div>
-
-            <div class="narration" id="narration-18">
-                You now have a complete, production-ready language switching system. Take your code and implement it on your site. Start with a few elements to test, then expand. Visit DigitalAllies.net to see this system in action. The code you built here is the exact same system they use.
-            </div>
-
-            <div class="tip-box">
-                <strong>Action Items:</strong>
-                <ul class="checklist">
-                    <li>Copy the complete code to your project</li>
-                    <li>Add data attributes to your HTML elements</li>
-                    <li>Test on different browsers and devices</li>
-                    <li>Check accessibility with screen readers</li>
-                    <li>Monitor localStorage in browser dev tools</li>
-                    <li>Add more languages as needed</li>
-                    <li>Implement SEO best practices</li>
-                </ul>
-            </div>
-
-            <div class="visual-example">
-                <div style="text-align: center; padding: 20px;">
-                    <h3 style="color: #667eea; margin-bottom: 20px;">Congratulations!</h3>
-                    <p style="font-size: 18px; color: #333; line-height: 1.8;">
-                        You've built a professional language switching system that's fast, accessible, and SEO-friendly. This same system powers DigitalAllies.net and can power your projects too.
-                    </p>
                 </div>
             </div>
-        </div>
 
-    </div>
+            <!-- Slide 13: SEO Best Practices -->
+            <div class="slide" id="slide13">
+                <div class="step-header">
+                    <div class="step-number">13</div>
+                    <div class="step-title">SEO for Multilingual Sites</div>
+                </div>
 
-    <div class="controls">
-        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
-        <div class="progress">
-            <div class="progress-text">Step <span id="currentSlide">1</span> of <span id="totalSlides">18</span></div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(13)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    For better search engine optimization, add hreflang tags to tell search engines about your language versions. Add alternate links in your HTML head section pointing to each language version. Also consider creating language-specific meta descriptions. While our current system switches content client-side, for best SEO results you might want separate URLs for each language that render server-side.
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">SEO Meta Tags</div>
+<span class="keyword">&lt;head&gt;</span>
+    <span class="comment">&lt;!-- Alternate language versions --&gt;</span>
+    <span class="keyword">&lt;link</span> <span class="string">rel="alternate" hreflang="en" 
+          href="https://digitalallies.net/"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;link</span> <span class="string">rel="alternate" hreflang="es" 
+          href="https://digitalallies.net/es/"</span><span class="keyword">&gt;</span>
+    
+    <span class="comment">&lt;!-- Language-specific descriptions --&gt;</span>
+    <span class="keyword">&lt;meta</span> <span class="string">name="description" 
+          content="Professional web development services"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;meta</span> <span class="string">name="description" lang="es"
+          content="Servicios profesionales de desarrollo web"</span><span class="keyword">&gt;</span>
+<span class="keyword">&lt;/head&gt;</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>SEO Element</th>
+                                <th>Implementation</th>
+                                <th>Benefit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>hreflang tags</td>
+                                <td>Link alternate language versions</td>
+                                <td>Search engines show correct language</td>
+                            </tr>
+                            <tr>
+                                <td>lang attribute</td>
+                                <td>Set on HTML element</td>
+                                <td>Helps with content indexing</td>
+                            </tr>
+                            <tr>
+                                <td>Meta descriptions</td>
+                                <td>Different for each language</td>
+                                <td>Better search result snippets</td>
+                            </tr>
+                            <tr>
+                                <td>URL structure</td>
+                                <td>Consider /es/ subdirectories</td>
+                                <td>Clearer site architecture</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
-    </div>
-</div>
 
-<script>
-    let currentSlide = 1;
-    const totalSlides = 18;
-    let currentSpeech = null;
+            <!-- Slide 14: Performance Optimization -->
+            <div class="slide" id="slide14">
+                <div class="step-header">
+                    <div class="step-number">14</div>
+                    <div class="step-title">Performance Optimization Tips</div>
+                </div>
 
-    // Text-to-Speech functionality
-    function playNarration(slideNum) {
-        stopNarration();
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(14)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    While our system is already efficient, here are some optimization tips for larger sites. Consider lazy loading translations for pages with lots of content. Cache the DOM queries so you're not searching the entire document every time. Use event delegation for language buttons instead of individual onclick handlers. Minify your JavaScript file for production. These optimizations become more important as your site grows.
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">Performance Optimizations</div>
+<span class="keyword">class</span> <span class="function">LanguageController</span> {
+    <span class="function">constructor</span>() {
+        <span class="keyword">this</span>.currentLang = localStorage.<span class="function">getItem</span>(<span class="string">'language'</span>) || <span class="string">'en'</span>;
         
-        const narrationElement = document.getElementById(`narration-${slideNum}`);
-        if (!narrationElement) return;
+        <span class="comment">// Cache DOM queries</span>
+        <span class="keyword">this</span>.translatableElements = <span class="keyword">null</span>;
+        <span class="keyword">this</span>.languageButtons = <span class="keyword">null</span>;
         
-        const text = narrationElement.textContent.trim();
-        
-        if ('speechSynthesis' in window) {
-            currentSpeech = new SpeechSynthesisUtterance(text);
-            currentSpeech.rate = 0.9;
-            currentSpeech.pitch = 1;
-            currentSpeech.volume = 1;
-            
-            window.speechSynthesis.speak(currentSpeech);
-        } else {
-            alert('Your browser does not support text-to-speech. Please try Chrome, Edge, or Safari.');
+        <span class="keyword">this</span>.<span class="function">init</span>();
+    }
+    
+    <span class="function">cacheElements</span>() {
+        <span class="comment">// Store element references to avoid repeated queries</span>
+        <span class="keyword">if</span> (!<span class="keyword">this</span>.translatableElements) {
+            <span class="keyword">this</span>.translatableElements = 
+                document.<span class="function">querySelectorAll</span>(<span class="string">'[data-en][data-es]'</span>);
+        }
+        <span class="keyword">if</span> (!<span class="keyword">this</span>.languageButtons) {
+            <span class="keyword">this</span>.languageButtons = 
+                document.<span class="function">querySelectorAll</span>(<span class="string">'[id^="lang-"]'</span>);
         }
     }
-
-    function stopNarration() {
-        if (window.speechSynthesis) {
-            window.speechSynthesis.cancel();
-        }
+    
+    <span class="function">updateContent</span>(lang) {
+        <span class="keyword">this</span>.<span class="function">cacheElements</span>();
+        
+        <span class="comment">// Use cached elements</span>
+        <span class="keyword">this</span>.translatableElements.<span class="function">forEach</span>(el => {
+            <span class="keyword">const</span> content = el.<span class="function">getAttribute</span>(<span class="string">`data-${lang}`</span>);
+            <span class="keyword">if</span> (content) el.textContent = content;
+        });
     }
+}
+                </div>
 
-    function showSlide(n) {
-        stopNarration();
-        
-        const slides = document.querySelectorAll('.slide');
-        if (n > totalSlides) currentSlide = totalSlides;
-        if (n < 1) currentSlide = 1;
-        
-        slides.forEach(slide => slide.classList.remove('active'));
-        slides[currentSlide - 1].classList.add('active');
-        
-        document.getElementById('currentSlide').textContent = currentSlide;
-        document.getElementById('totalSlides').textContent = totalSlides;
-        
-        const progress = (currentSlide / totalSlides) * 100;
-        document.getElementById('progressFill').style.width = progress + '%';
-        
-        document.getElementById('prevBtn').disabled = currentSlide === 1;
-        document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
-        
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+                <div class="tip-box">
+                    <strong>Performance Tip:</strong>
+                    Caching DOM queries can improve performance by 50% or more on pages with many translatable elements.
+                </div>
+            </div>
+
+            <!-- Slide 15: Real World Example -->
+            <div class="slide" id="slide15">
+                <div class="step-header">
+                    <div class="step-number">15</div>
+                    <div class="step-title">Real World Example: Digital Allies</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(15)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Let's look at how Digital Allies uses this system in production. The website serves both English and Spanish-speaking clients. Key sections like the hero message, service descriptions, and call to action buttons all switch seamlessly. Navigation menus update from Home to Inicio, Services to Servicios. Even the contact forms and testimonials translate. This implementation shows how powerful and flexible our system is in a real business context.
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">Digital Allies Example</div>
+<span class="comment">&lt;!-- Hero Section --&gt;</span>
+<span class="keyword">&lt;h1</span> <span class="string">data-en="Comprehensive digital solutions tailored for your success"
+    data-es="Soluciones digitales integrales adaptadas a tu éxito"</span><span class="keyword">&gt;</span>
+    Comprehensive digital solutions tailored for your success
+<span class="keyword">&lt;/h1&gt;</span>
+
+<span class="comment">&lt;!-- Navigation --&gt;</span>
+<span class="keyword">&lt;nav&gt;</span>
+    <span class="keyword">&lt;a</span> <span class="string">href="/" data-en="Home" data-es="Inicio"</span><span class="keyword">&gt;</span>Home<span class="keyword">&lt;/a&gt;</span>
+    <span class="keyword">&lt;a</span> <span class="string">href="/services" data-en="Services" data-es="Servicios"</span><span class="keyword">&gt;</span>Services<span class="keyword">&lt;/a&gt;</span>
+    <span class="keyword">&lt;a</span> <span class="string">href="/contact" data-en="Contact" data-es="Contacto"</span><span class="keyword">&gt;</span>Contact<span class="keyword">&lt;/a&gt;</span>
+<span class="keyword">&lt;/nav&gt;</span>
+
+<span class="comment">&lt;!-- Call to Action --&gt;</span>
+<span class="keyword">&lt;button</span> <span class="string">class="cta"
+        data-en="Start Your Project"
+        data-es="Comienza Tu Proyecto"</span><span class="keyword">&gt;</span>
+    Start Your Project
+<span class="keyword">&lt;/button&gt;</span>
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-example-title">Interactive Demo: Digital Allies Style</div>
+                    <div class="demo-buttons" id="demoButtons15">
+                        <button class="demo-btn active" onclick="updateDigitalAlliesDemo('en')">EN</button>
+                        <button class="demo-btn" onclick="updateDigitalAlliesDemo('es')">ES</button>
+                    </div>
+                    <div class="demo-content" id="daDemo">
+                        <h3>Comprehensive digital solutions tailored for your success</h3>
+                        <p>Professional web development services that work in the real world</p>
+                        <button class="demo-btn" style="margin-top: 15px;">Start Your Project</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 16: Common Issues -->
+            <div class="slide" id="slide16">
+                <div class="step-header">
+                    <div class="step-number">16</div>
+                    <div class="step-title">Troubleshooting Common Issues</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(16)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Let's cover some common issues you might encounter. If text doesn't update, check that you have both data attributes on every element. If buttons don't work, verify your JavaScript is loaded and the global toggle language function exists. If language doesn't persist, check that localStorage is enabled in the browser. If some elements don't switch, make sure you're querying for the right attributes. These are the most frequent problems and their solutions.
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Problem</th>
+                                <th>Cause</th>
+                                <th>Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Text doesn't switch</td>
+                                <td>Missing data attributes</td>
+                                <td>Add both data-en and data-es to element</td>
+                            </tr>
+                            <tr>
+                                <td>Buttons do nothing</td>
+                                <td>JavaScript not loaded</td>
+                                <td>Check script tag and console for errors</td>
+                            </tr>
+                            <tr>
+                                <td>Language doesn't save</td>
+                                <td>localStorage disabled</td>
+                                <td>Check browser settings or use cookies</td>
+                            </tr>
+                            <tr>
+                                <td>Some text stays English</td>
+                                <td>Wrong querySelector</td>
+                                <td>Verify elements have correct attributes</td>
+                            </tr>
+                            <tr>
+                                <td>Page refreshes</td>
+                                <td>Button is inside a form</td>
+                                <td>Add type="button" to prevent submission</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-label">Debugging Tips</div>
+<span class="comment">// Add console logs to track execution</span>
+<span class="function">toggleLanguage</span>(lang) {
+    console.<span class="function">log</span>(<span class="string">'Switching to:'</span>, lang);
+    <span class="keyword">this</span>.currentLang = lang;
+    console.<span class="function">log</span>(<span class="string">'Saving to localStorage'</span>);
+    localStorage.<span class="function">setItem</span>(<span class="string">'language'</span>, lang);
+    console.<span class="function">log</span>(<span class="string">'Updating content'</span>);
+    <span class="keyword">this</span>.<span class="function">updateContent</span>(lang);
+}
+                </div>
+            </div>
+
+            <!-- Slide 17: Complete Code -->
+            <div class="slide" id="slide17">
+                <div class="step-header">
+                    <div class="step-number">17</div>
+                    <div class="step-title">Complete Code Reference</div>
+                </div>
+
+                <div class="audio-control">
+                    <span>🎙️ Narration</span>
+                    <button class="audio-btn" onclick="readNarration(17)">Play Audio</button>
+                </div>
+
+                <div class="narration">
+                    <span class="narration-icon">🗣️</span>
+                    Here's the complete Language Controller class with all methods we've built together. This is production-ready code you can copy and use immediately. Notice how clean and organized the code is with clear comments explaining each section. The class structure keeps everything contained and reusable. You can drop this into any project and it will work with minimal modifications.
+                </div>
+
+                <div class="code-block" style="max-height: 500px; overflow-y: auto;">
+                    <div class="code-label">Complete language-controller.js</div>
+<span class="keyword">class</span> <span class="function">LanguageController</span> {
+    <span class="function">constructor</span>() {
+        <span class="keyword">this</span>.currentLang = localStorage.<span class="function">getItem</span>(<span class="string">'language'</span>) || <span class="string">'en'</span>;
+        <span class="keyword">this</span>.<span class="function">init</span>();
     }
-
-    function changeSlide(n) {
-        currentSlide += n;
-        showSlide(currentSlide);
+    
+    <span class="function">init</span>() {
+        <span class="keyword">this</span>.<span class="function">updateContent</span>(<span class="keyword">this</span>.currentLang);
+        <span class="keyword">this</span>.<span class="function">updateUI</span>(<span class="keyword">this</span>.currentLang);
+        <span class="keyword">this</span>.<span class="function">updatePageLang</span>(<span class="keyword">this</span>.currentLang);
     }
-
-    function demoSwitch(btn, lang) {
-        const parent = btn.parentElement;
-        parent.querySelectorAll('.demo-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-    }
-
-    function demoDA(lang) {
-        const demo = document.getElementById('daDemo');
-        const buttons = demo.parentElement.querySelectorAll('.demo-btn');
-        
-        buttons.forEach(b => b.classList.remove('active'));
-        buttons[lang === 'en' ? 0 : 1].classList.add('active');
-        
-        if (lang === 'es') {
-            demo.innerHTML = `
-                <h3>Soluciones digitales integrales adaptadas a tu éxito</h3>
-                <p style="color: #666; margin: 15px 0;">Servicios profesionales de desarrollo web</p>
-                <button class="demo-btn" style="margin-top: 10px;">Comienza Tu Proyecto</button>
-            `;
-        } else {
-            demo.innerHTML = `
-                <h3>Comprehensive digital solutions tailored for your success</h3>
-                <p style="color: #666; margin: 15px 0;">Professional web development services</p>
-                <button class="demo-btn" style="margin-top: 10px;">Start Your Project</button>
-            `;
-        }
-    }
-
-    showSlide(1);
-</script>
-```
-
-</body>
-</html>
+    
+    <span class="function">toggleLanguage</span>(lang) {
+        <span class="keyword">this</span>.currentLang = lang;
+        localStorage.<span class="function">setItem</span>(<span class="string">'language'</span>, lang);
+        <span class="keyword">this</span>.<span class="function">updateContent</span>(lang);
+        <span class="keyword">this</span>.<span class="function">updateUI</span>(lang);
+        <span class="keyword">this</span>.<span class="function">updatePageLang</span>(lang);
